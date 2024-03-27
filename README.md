@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Note
+
+# 1.Box input component(có form input giống nhau)
+
+# 2.Bottom bar fixed chuyển thành Component
+
+# 3. Show quantity product in cart (Home page)
+
+# 4.Kiểm tra đăng nhập
+
+# 5.Breadcrumbs
+
+# 6.Search
+
+# 7.
+
+# 8.
