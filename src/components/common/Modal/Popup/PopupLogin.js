@@ -1,33 +1,34 @@
 import classNames from 'classnames/bind';
 
-import styles from './ModalLogin.module.scss';
+import styles from './PopupLogin.module.scss';
 import images from '~/assets/images';
 import Button from '../../Button';
 
 const cx = classNames.bind(styles);
 
-function ModalLogin() {
+function PopupLogin({ children }) {
     return (
         <div className={cx('wrap')}>
             <div className={cx('top')}>
-                <h2>CellPhones</h2>
-                <div className={cx('thumbs')}>
-                    <img src={images.chibi} alt="" />
-                </div>
+                <h2>Cellphones</h2>
+            </div>
+            <div className={cx('thumbs')}>
+                <img src={images.chibi} alt="Cellphones" />
             </div>
             <div className={cx('text')}>
                 <p>Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn.</p>
             </div>
             <div className={cx('bottom')}>
-                <Button className={cx('btn')}  rounded to={'/account'}>
-                    Sign up
+                <Button className={cx('btn')} rounded to={'/account'}>
+                    Đăng kí
                 </Button>
-                <Button  className={cx('btn')} primary to={'/account'}>
-                    Sign in
+
+                <Button className={cx('btn')} primary to={'/account'}>
+                    Đăng nhập
                 </Button>
             </div>
         </div>
     );
 }
 
-export default ModalLogin;
+export default PopupLogin;

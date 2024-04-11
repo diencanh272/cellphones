@@ -7,7 +7,7 @@ function DefaultLayout({ children }) {
             <header>
                 <Header />
             </header>
-            <main style={{ minHeight: '1000px' }}>{children}</main>
+            <main>{children}</main>
             <footer>
                 <Footer />
             </footer>

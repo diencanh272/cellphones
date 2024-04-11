@@ -13,6 +13,11 @@
 
 .thumbs {
     text-align: center;
+
+    img {
+        height: 80px;
+        object-fit: contain;
+    }
 }
 
 .text {

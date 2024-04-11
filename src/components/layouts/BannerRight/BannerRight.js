@@ -19,11 +19,11 @@ function BannerRight() {
                     <img src={images.bannerRight2} alt="" />
                 </Link>
             </div>
-            <div className={cx('item')}>
+            {/* <div className={cx('item')}>
                 <Link to={'#'}>
                     <img src={images.bannerRight3} alt="" />
                 </Link>
-            </div>
+            </div> */}
         </div>
     );
 }

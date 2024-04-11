@@ -1,6 +1,12 @@
 .wrap {
     background-color: var(--primary-color);
     color: var(--white-color);
+
+    position: fixed;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    z-index: 999;
 }
 
 .main {

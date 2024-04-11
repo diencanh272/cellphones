@@ -36,8 +36,6 @@ function Home() {
                 {/**Home featured-product (lazy load) */}
                 <div className={cx('featured-product')}>
                     <ProductList />
-                    <ProductList />
-                    <ProductList />
                 </div>
             </div>
         </div>
