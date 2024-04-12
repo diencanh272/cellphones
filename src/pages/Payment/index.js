@@ -5,39 +5,39 @@ import styles from './Payment.module.scss';
 import Button from '~/components/common/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import CartItem from '~/components/layouts/CartItem';
-import FormInfoCustomer from '~/components/layouts/FormInfo/FormInfoCustomer';
-import FormAddress from '~/components/layouts/FormAddress';
+// import CartItem from '~/components/layouts/CartItem';
+// import FormInfoCustomer from '~/components/layouts/FormInfo/FormInfoCustomer';
+// import FormAddress from '~/components/layouts/FormAddress';
 
 const cx = classNames.bind(styles);
 
 function Payment() {
-    const GetInfoCustomer = () => (
-        <>
-            <div className={cx('listBuy')}>
-                <CartItem />
-            </div>
-            <div className={cx('customer')}>
-                <p>Thông tin khách hàng</p>
-                <FormInfoCustomer />
-            </div>
-            <div className={cx('delivery')}>
-                <p>Thông tin nhận hàng</p>
-                <FormAddress />
-            </div>
-            <div className={cx('total')}>
-                <div className={cx('total-price')}>
-                    <p>Tổng tiền: </p>
-                    <span>100$</span>
-                </div>
-                <div className={cx('action')}>
-                    <Button className={cx('action-buy')} primary>
-                        Tiếp tục
-                    </Button>
-                </div>
-            </div>
-        </>
-    );
+    // const GetInfoCustomer = () => (
+    //     <>
+    //         <div className={cx('listBuy')}>
+    //             <CartItem />
+    //         </div>
+    //         <div className={cx('customer')}>
+    //             <p>Thông tin khách hàng</p>
+    //             <FormInfoCustomer />
+    //         </div>
+    //         <div className={cx('delivery')}>
+    //             <p>Thông tin nhận hàng</p>
+    //             <FormAddress />
+    //         </div>
+    //         <div className={cx('total')}>
+    //             <div className={cx('total-price')}>
+    //                 <p>Tổng tiền: </p>
+    //                 <span>100$</span>
+    //             </div>
+    //             <div className={cx('action')}>
+    //                 <Button className={cx('action-buy')} primary>
+    //                     Tiếp tục
+    //                 </Button>
+    //             </div>
+    //         </div>
+    //     </>
+    // );
 
     const Payment = () => (
         <>
