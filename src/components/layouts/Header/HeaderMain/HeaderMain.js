@@ -18,7 +18,6 @@ const cx = classNames.bind(styles);
 function HeaderMain() {
     const [modalOpen, setModalOpen] = useState(false);
     const [account, setAccount] = useState(false);
-    const location = useLocation();
 
     // console.log(userCurrentLogin);
 
@@ -27,11 +26,6 @@ function HeaderMain() {
             setAccount(true);
         }
     }, []);
-
-    // Hàm kiểm tra xem một URL có phù hợp với đường dẫn cho trước không
-    if (location.pathname) {
-        setModalOpen(false);
-    }
 
     const userLogin = () =>
         account ? (
