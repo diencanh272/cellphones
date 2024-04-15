@@ -5,35 +5,34 @@ import Button from '../Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faBell, faGears, faTruckFast, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { userCurrentSignup } from '~/utils/helpers/userCurrentSignup';
-import ShortName from '~/utils/helpers/shortName';
-import { useNavigate } from 'react-router-dom';
+import ShortNameUser from '~/utils/helpers/shortNameUser';
 
 const cx = classNames.bind(styles);
 
 function TooltipModal() {
-    const navigate = useNavigate();
-
     const handleLogOut = () => {
         if (localStorage && localStorage.getItem('Account')) {
             localStorage.removeItem('Account');
-            navigate('/account');
         }
     };
 
     const activeAdmin = () => {
         if (userCurrentSignup.status === 'ACTIVE') {
+            console.log('active admin');
             return (
                 <Button className={cx('btn')} to={'/admin'} text large leftIcon={<FontAwesomeIcon icon={faGears} />}>
                     Admin
                 </Button>
             );
+        } else {
+            console.log('no active');
         }
     };
 
     const mainUserLogin = () => (
         <>
             <div className={cx('top-left')}>
-                <ShortName />
+                <ShortNameUser />
             </div>
             <div className={cx('top-right')}>
                 <span className={cx('fullname')}>{userCurrentSignup.fullname}</span>
@@ -67,7 +66,7 @@ function TooltipModal() {
                         Thông báo
                     </Button>
                 </li>
-                <li className={cx('item')}>{activeAdmin}</li>
+                <li className={cx('item')}>{activeAdmin()}</li>
                 <li className={cx('item')}>
                     <Button
                         className={cx('btn')}
@@ -76,6 +75,7 @@ function TooltipModal() {
                         leftIcon={<FontAwesomeIcon icon={faArrowRightFromBracket} />}
                         onClick={() => {
                             handleLogOut();
+                            window.location.reload();
                         }}
                     >
                         Đăng xuất tài khoản

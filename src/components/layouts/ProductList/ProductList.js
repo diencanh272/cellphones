@@ -17,7 +17,7 @@ function ProductList({ products }) {
         dispatch(actionFetchListCategoryApi());
     }, [dispatch]);
 
-    const renderCategory = categories.map((category, index) => {
+    const renderProductByCategory = categories.map((category, index) => {
         return (
             <div className={cx('wrap')} key={index}>
                 <div className={cx('row', 'top')}>
@@ -27,13 +27,14 @@ function ProductList({ products }) {
                     </div> */}
                 </div>
                 <div className={cx('row', 'row-cols-5')}>
+                    <ProductList categoryName={category.name} />
                     <ProductCard />
                 </div>
             </div>
         );
     });
 
-    return <>{renderCategory}</>;
+    return <>{renderProductByCategory}</>;
 }
 
 export default ProductList;

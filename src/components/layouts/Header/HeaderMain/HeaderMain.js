@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './HeaderMain.module.scss';
@@ -9,32 +9,36 @@ import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import Search from '~/components/layouts/Search';
 import Button from '~/components/common/Button';
 import { Modal } from 'antd';
-import Popup from '~/components/common/Modal/Popup';
 import UserLogin from '../../UserLogin';
 import { userCurrentSignup } from '~/utils/helpers/userCurrentSignup';
+import PopupLogin from '~/components/common/Modal/Popup/PopupLogin';
 
 const cx = classNames.bind(styles);
 
 function HeaderMain() {
     const [modalOpen, setModalOpen] = useState(false);
     const [account, setAccount] = useState(false);
+    const location = useLocation();
+    const path = location.pathname === '/account';
 
-    // console.log(userCurrentLogin);
+    // console.log(userCurrentSignup);
 
     useEffect(() => {
         if (localStorage.getItem('Account')) {
-            setAccount(true);
+            setTimeout(() => {
+                setAccount(true);
+            }, 1000);
         }
     }, []);
 
-    const userLogin = () =>
+    const UserLoginButton = () =>
         account ? (
             <UserLogin userCurrentSignup={userCurrentSignup} />
         ) : (
             <Button
                 className={cx('user')}
                 leftIcon={<FontAwesomeIcon icon={faUser} />}
-                onClick={() => setModalOpen(true)}
+                onClick={() => setModalOpen(!path)}
             >
                 User
             </Button>
@@ -61,18 +65,12 @@ function HeaderMain() {
                         >
                             Giỏ hàng
                         </Button>
-                        {userLogin()}
+                        <UserLoginButton />
                     </div>
                 </div>
             </div>
             <Modal centered open={modalOpen} footer={null} onCancel={() => setModalOpen(false)} width={350}>
-                <Popup
-                    title={'Cellphones'}
-                    thumbs={<img src={images.chibi} alt="Cellphones" />}
-                    textNote={'Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn. '}
-                    childrenButtonLeft={'Đăng kí'}
-                    childrenButtonRight={'Đăng nhập'}
-                />
+                <PopupLogin modalOpen={modalOpen} />
             </Modal>
         </nav>
     );

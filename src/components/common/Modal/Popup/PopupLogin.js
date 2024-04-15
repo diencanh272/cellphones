@@ -6,7 +6,7 @@ import Button from '../../Button';
 
 const cx = classNames.bind(styles);
 
-function PopupLogin({ children }) {
+function PopupLogin(modalOpen) {
     return (
         <div className={cx('wrap')}>
             <div className={cx('top')}>
@@ -19,11 +19,21 @@ function PopupLogin({ children }) {
                 <p>Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn.</p>
             </div>
             <div className={cx('bottom')}>
-                <Button className={cx('btn')} rounded to={'/account'}>
+                <Button
+                    className={cx('btn')}
+                    rounded
+                    to={'/account/signup'}
+                    onClick={() => (modalOpen.modalOpen = false)}
+                >
                     Đăng kí
                 </Button>
 
-                <Button className={cx('btn')} primary to={'/account'}>
+                <Button
+                    className={cx('btn')}
+                    primary
+                    to={'/account/login'}
+                    onClick={() => (modalOpen.modalOpen = false)}
+                >
                     Đăng nhập
                 </Button>
             </div>

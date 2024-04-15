@@ -4,17 +4,55 @@ import styles from './Account.module.scss';
 import images from '~/assets/images';
 import Button from '~/components/common/Button';
 import icons from '~/assets/icon';
-// import FormLogin from '~/components/layouts/FormLogin';
+import FormLogin from '~/components/layouts/FormLogin';
 import FormSignup from '~/components/layouts/FormSignup';
-// import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
 
 function Account() {
+    const location = useLocation();
+    const setForm = (path) => {
+        return location.pathname === path;
+    };
+
+    const FormLoginOrSignup = () =>
+        setForm('/account/login') ? (
+            <FormLogin />
+        ) : setForm('/account/signup') ? (
+            <FormSignup />
+        ) : setForm('/account') ? (
+            <AccountProfile />
+        ) : (
+            <strong>Page Not Found</strong>
+        );
+
+    const AccountProfile = () => {
+        if (localStorage && localStorage.getItem('Account')) {
+            let accountProfile = JSON.parse(localStorage.getItem('Account'));
+
+            return <div>{accountProfile.username}</div>;
+        } else {
+            return <FormLogin />;
+        }
+    };
+
+    const ButtonNav = () =>
+        setForm('/account/signup') ? (
+            <Button to={'/account/login'} leftIcon={<FontAwesomeIcon icon={faArrowLeft} />}></Button>
+        ) : (
+            ''
+        );
+
     return (
         <div className={cx('wrap')}>
             <div className={cx('row')}>
                 <div className={cx('offset-3', 'col-6')}>
-                    <div className={cx('nav')}></div>
+                    <div className={cx('nav')}>
+                        <ButtonNav />
+                    </div>
+
                     <div className={cx('top')}>
                         <div className={cx('thumb')}>
                             <img src={images.chibi} alt="" />
@@ -37,7 +75,7 @@ function Account() {
                         <hr />
                     </div>
                     <div className={cx('form-wrap')}>
-                        <FormSignup />
+                        <FormLoginOrSignup />
                     </div>
                 </div>
             </div>
